@@ -51,6 +51,7 @@ public final class VideoSingleWrapper extends BasicChoiceVideoWrapper<VideoSingl
         AlbumActivity.sSizeFilter = mSizeFilter;
         AlbumActivity.sMimeFilter = mMimeTypeFilter;
         AlbumActivity.sDurationFilter = mDurationFilter;
+        AlbumActivity.sPathFilter = mPathFilter;
         AlbumActivity.sResult = mResult;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);

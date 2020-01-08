@@ -41,14 +41,16 @@ public class MediaReader {
     private Filter<Long> mSizeFilter;
     private Filter<String> mMimeFilter;
     private Filter<Long> mDurationFilter;
+    private Filter<String> mPathFilter;
     private boolean mFilterVisibility;
 
-    public MediaReader(Context context, Filter<Long> sizeFilter, Filter<String> mimeFilter, Filter<Long> durationFilter, boolean filterVisibility) {
+    public MediaReader(Context context, Filter<Long> sizeFilter, Filter<String> mimeFilter, Filter<Long> durationFilter, Filter<String> mPathFilter, boolean filterVisibility) {
         this.mContext = context;
 
         this.mSizeFilter = sizeFilter;
         this.mMimeFilter = mimeFilter;
         this.mDurationFilter = durationFilter;
+        this.mPathFilter = mPathFilter;
         this.mFilterVisibility = filterVisibility;
     }
 
@@ -97,6 +99,10 @@ public class MediaReader {
                 imageFile.setLongitude(longitude);
                 imageFile.setSize(size);
 
+                if (mPathFilter != null && mPathFilter.filter(path)){
+                    if (!mFilterVisibility) continue;
+                    imageFile.setDisable(true);
+                }
                 if (mSizeFilter != null && mSizeFilter.filter(size)) {
                     if (!mFilterVisibility) continue;
                     imageFile.setDisable(true);
@@ -171,6 +177,10 @@ public class MediaReader {
                 videoFile.setSize(size);
                 videoFile.setDuration(duration);
 
+                if (mPathFilter != null && mPathFilter.filter(path)){
+                    if (!mFilterVisibility) continue;
+                    videoFile.setDisable(true);
+                }
                 if (mSizeFilter != null && mSizeFilter.filter(size)) {
                     if (!mFilterVisibility) continue;
                     videoFile.setDisable(true);

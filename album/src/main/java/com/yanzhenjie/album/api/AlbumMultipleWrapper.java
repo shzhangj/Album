@@ -74,6 +74,7 @@ public class AlbumMultipleWrapper extends BasicChoiceAlbumWrapper<AlbumMultipleW
         AlbumActivity.sSizeFilter = mSizeFilter;
         AlbumActivity.sMimeFilter = mMimeTypeFilter;
         AlbumActivity.sDurationFilter = mDurationFilter;
+        AlbumActivity.sPathFilter = mPathFilter;
         AlbumActivity.sResult = mResult;
         AlbumActivity.sCancel = mCancel;
         Intent intent = new Intent(mContext, AlbumActivity.class);

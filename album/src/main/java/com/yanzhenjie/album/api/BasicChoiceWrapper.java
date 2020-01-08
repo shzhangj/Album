@@ -30,6 +30,7 @@ public abstract class BasicChoiceWrapper<Returner extends BasicChoiceWrapper, Re
 
     Filter<Long> mSizeFilter;
     Filter<String> mMimeTypeFilter;
+    Filter<String> mPathFilter;
 
     boolean mFilterVisibility = true;
 
@@ -75,6 +76,15 @@ public abstract class BasicChoiceWrapper<Returner extends BasicChoiceWrapper, Re
         return (Returner) this;
     }
 
+    /**
+     * Filter the file path
+     * @param filter
+     * @return
+     */
+    public Returner filterPath(Filter<String> filter) {
+        this.mPathFilter = filter;
+        return (Returner) this;
+    }
     /**
      * The visibility of the filtered file.
      *

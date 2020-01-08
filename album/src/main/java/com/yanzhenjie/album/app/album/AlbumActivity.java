@@ -67,6 +67,7 @@ public class AlbumActivity extends BaseActivity implements
     public static Filter<Long> sSizeFilter;
     public static Filter<String> sMimeFilter;
     public static Filter<Long> sDurationFilter;
+    public static Filter<String> sPathFilter;
 
     public static Action<ArrayList<AlbumFile>> sResult;
     public static Action<String> sCancel;
@@ -155,7 +156,7 @@ public class AlbumActivity extends BaseActivity implements
     @Override
     protected void onPermissionGranted(int code) {
         ArrayList<AlbumFile> checkedList = getIntent().getParcelableArrayListExtra(Album.KEY_INPUT_CHECKED_LIST);
-        MediaReader mediaReader = new MediaReader(this, sSizeFilter, sMimeFilter, sDurationFilter, mFilterVisibility);
+        MediaReader mediaReader = new MediaReader(this, sSizeFilter, sMimeFilter, sDurationFilter, sPathFilter, mFilterVisibility);
         mMediaReadTask = new MediaReadTask(mFunction, checkedList, mediaReader, this);
         mMediaReadTask.execute();
     }
@@ -604,6 +605,7 @@ public class AlbumActivity extends BaseActivity implements
         sSizeFilter = null;
         sMimeFilter = null;
         sDurationFilter = null;
+        sPathFilter = null;
         sResult = null;
         sCancel = null;
         super.finish();
